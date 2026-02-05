@@ -15,7 +15,9 @@ const Section = ({ title, body, note, id, className }) => {
         const [, label, url] = match;
         return (
           <p key={`${id}-note-${index}`}>
-            <a href={url}>{label}</a>
+            <a href={url} target="_blank" rel="noreferrer">
+              {label}
+            </a>
           </p>
         );
       }
