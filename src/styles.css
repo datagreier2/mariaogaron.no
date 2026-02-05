@@ -168,12 +168,29 @@ body {
   grid-column: 1 / -1;
 }
 
-.hero__dates span {
+.hero__dates > span {
   background: var(--panel);
   border: var(--stroke);
   padding: 6px 10px;
   width: fit-content;
   z-index: 2;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.hero__dates-sub {
+  font-weight: 500;
+}
+
+.hero__dates-link {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 2px solid var(--ink);
+}
+
+.hero__dates-link:hover,
+.hero__dates-link:focus {
+  background: var(--acid);
 }
 
 .language {

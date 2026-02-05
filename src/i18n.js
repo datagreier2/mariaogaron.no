@@ -8,7 +8,7 @@ const translations = {
     heroTitle: "Maria & Aron",
     heroBody:
       "We're getting married!",
-    heroDates: ["Party 25 April"],
+    heroDates: ["Party 25 April @ Dogyard"],
     rsvpTitle: "RSVP",
     rsvpBody:
       "Please RSVP by April 1.",
@@ -31,7 +31,7 @@ const translations = {
     heroTitle: "Maria & Aron",
     heroBody:
       "Vi skal gifte oss!",
-    heroDates: ["Fest 25. april"],
+    heroDates: ["Fest 25. april @ Dogyard"],
     rsvpTitle: "Svar vennligst",
     rsvpBody:
       "Svar innen 1. april.",

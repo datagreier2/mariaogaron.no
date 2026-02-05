@@ -68,9 +68,25 @@ export default function App() {
         <div className="hero__kicker">{t.heroKicker}</div>
         <p>{t.heroBody}</p>
         <div className="hero__dates">
-          {t.heroDates.map((line) => (
-            <span key={line}>{line}</span>
-          ))}
+          {t.heroDates.map((line) => {
+            const separator = " @ ";
+            if (line.includes(separator)) {
+              const [main, sub] = line.split(separator);
+              return (
+                <span key={line}>
+                  {main}{" "}
+                  <span className="hero__dates-sub">
+                    @{" "}
+                    <a className="hero__dates-link" href="#directions">
+                      {sub}
+                    </a>
+                  </span>
+                </span>
+              );
+            }
+
+            return <span key={line}>{line}</span>;
+          })}
         </div>
       </header>
 
