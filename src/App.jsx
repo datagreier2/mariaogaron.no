@@ -74,7 +74,8 @@ export default function App() {
               const [main, sub] = line.split(separator);
               return (
                 <span key={line}>
-                  {main}{" "}
+                  {main}
+                  <br className="hero__dates-break" />
                   <span className="hero__dates-sub">
                     @{" "}
                     <a className="hero__dates-link" href="#directions">
