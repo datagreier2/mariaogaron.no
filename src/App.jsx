@@ -7,14 +7,32 @@ const languageLabel = (code) => {
   return code;
 };
 
-const Section = ({ title, body, note, id }) => {
+const Section = ({ title, body, note, id, className }) => {
+  const renderNoteLines = (text) => {
+    return text.split("\n").map((line, index) => {
+      const match = line.match(/^(.*?):\s*(https?:\/\/\S+)\s*$/);
+      if (match) {
+        const [, label, url] = match;
+        return (
+          <p key={`${id}-note-${index}`}>
+            <a href={url}>{label}</a>
+          </p>
+        );
+      }
+
+      return <p key={`${id}-note-${index}`}>{line}</p>;
+    });
+  };
+
   return (
-    <section className="panel" id={id}>
+    <section className={`panel${className ? ` ${className}` : ""}`} id={id}>
       <div className="panel__header">
         <h2>{title}</h2>
       </div>
       <p>{body}</p>
-      {note ? <p className="panel__note">{note}</p> : null}
+      {note ? (
+        <div className="panel__note">{renderNoteLines(note)}</div>
+      ) : null}
     </section>
   );
 };
@@ -25,8 +43,8 @@ export default function App() {
   return (
     <div className="page">
       <header className="hero">
+        <img className="hero__image" src="/couple.png" alt="Maria and Aron" />
         <div className="hero__top">
-          <div className="hero__kicker">{t.heroKicker}</div>
           <label className="language">
             <span className="language__label">{t.languageLabel}</span>
             <span className="language__value">
@@ -47,6 +65,7 @@ export default function App() {
           </label>
         </div>
         <h1>{t.heroTitle}</h1>
+        <div className="hero__kicker">{t.heroKicker}</div>
         <p>{t.heroBody}</p>
         <div className="hero__dates">
           {t.heroDates.map((line) => (
@@ -61,6 +80,7 @@ export default function App() {
           title={t.rsvpTitle}
           body={t.rsvpBody}
           note={t.rsvpNote}
+          className="panel--wide"
         />
         <Section
           id="directions"
