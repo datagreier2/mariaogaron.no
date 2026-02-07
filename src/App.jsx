@@ -18,6 +18,47 @@ const Section = ({
   bodyAsList,
   bodyClass,
 }) => {
+  const renderInline = (text) => {
+    const parts = [];
+    const pattern = /(https?:\/\/\S+)|\baron\.social\b/g;
+    let lastIndex = 0;
+    let match;
+
+    while ((match = pattern.exec(text)) !== null) {
+      if (match.index > lastIndex) {
+        parts.push(text.slice(lastIndex, match.index));
+      }
+      if (match[1]) {
+        const url = match[1].replace(/[).,!?]+$/, "");
+        const trailing = match[1].slice(url.length);
+        parts.push(
+          <a key={`${id}-inline-${match.index}`} href={url} target="_blank" rel="noreferrer">
+            {url}
+          </a>
+        );
+        if (trailing) parts.push(trailing);
+      } else {
+        parts.push(
+          <a
+            key={`${id}-inline-${match.index}`}
+            href="https://aron.social"
+            target="_blank"
+            rel="noreferrer"
+          >
+            aron.social
+          </a>
+        );
+      }
+      lastIndex = match.index + match[0].length;
+    }
+
+    if (lastIndex < text.length) {
+      parts.push(text.slice(lastIndex));
+    }
+
+    return parts;
+  };
+
   const renderNoteLines = (text) => {
     return text.split("\n").map((line, index) => {
       const match = line.match(/^(.*?):\s*(https?:\/\/\S+)\s*$/);
@@ -37,9 +78,9 @@ const Section = ({
       }
 
       return noteAsList ? (
-        <li key={`${id}-note-${index}`}>{line}</li>
+        <li key={`${id}-note-${index}`}>{renderInline(line)}</li>
       ) : (
-        <p key={`${id}-note-${index}`}>{line}</p>
+        <p key={`${id}-note-${index}`}>{renderInline(line)}</p>
       );
     });
   };
@@ -57,7 +98,7 @@ const Section = ({
             ))}
           </ul>
         ) : (
-          <p>{body}</p>
+          <p>{renderInline(body)}</p>
         )
       ) : null}
       {note ? (

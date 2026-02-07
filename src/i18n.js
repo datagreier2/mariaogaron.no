@@ -14,7 +14,8 @@ const translations = {
       "Please RSVP by April 1st.",
     rsvpNote: "Respond here: https://forms.gle/SwN1yks1u1Gv6xUD6",
     infoTitle: "Info",
-    infoBody: "",
+    infoBody:
+      "You can reach Aron at aron.social and toastmaster Øyvind at oyvind.aamold@gmail.com.",
     infoNote:
       "The party is for adults. If any youths under 20 want to attend, it's possible to give them inverted alcohol wristbands. Let us know well in advance!\nInvitation to dinner for the closest family and friends will come as a separate invitation.\nThe formal ceremony is at Rådhuset on April 24, with limited space.",
     giftsTitle: "Gifts",
@@ -50,7 +51,8 @@ const translations = {
       "Svar innen 1. april.",
     rsvpNote: "Svar her: https://forms.gle/SwN1yks1u1Gv6xUD6",
     infoTitle: "Info",
-    infoBody: "",
+    infoBody:
+      "Du kan nå Aron på aron.social og toastmaster Øyvind på oyvind.aamold@gmail.com.",
     infoNote:
       "Festen er for voksne. Hvis noen ungdommer under 20 ønsker å delta er det mulig å gi dem omvendt skjenkebånd. Si i så fall fra i god tid!\nInvitasjon til middag for de aller nærmeste kommer som separat invitasjon.\nDen formelle vielsen er på Rådhuset den 24. april, med begrenset plass.",
     giftsTitle: "Gaver",

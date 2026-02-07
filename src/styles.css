@@ -336,6 +336,13 @@ body {
   color: var(--muted);
 }
 
+.panel p a {
+  color: inherit;
+  text-decoration: underline;
+  font-weight: 600;
+  text-underline-offset: 3px;
+}
+
 .panel__body-list {
   list-style: none;
   margin: 0;
