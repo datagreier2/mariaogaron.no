@@ -8,14 +8,17 @@ const translations = {
     heroTitle: "Maria & Aron",
     heroBody:
       "We're getting married!",
-    heroDates: ["Party 25 April @ Dogyard"],
+    heroDates: ["25 April @ Dogyard", "Party starts at 19:30"],
     rsvpTitle: "RSVP",
     rsvpBody:
       "Please RSVP by April 1.",
     rsvpNote: "Respond here: https://forms.gle/SwN1yks1u1Gv6xUD6",
+    infoTitle: "Info",
+    infoBody: "",
+    infoNote:
+      "The party is for adults. If any youths under 20 want to attend, it's possible to give them inverted alcohol wristbands. Let us know well in advance!\nInvitation to dinner for the closest family and friends will come as a separate invitation.\nThe formal ceremony is at Rådhuset on April 24, with limited space.",
     directionsTitle: "Directions",
-    directionsBody:
-      "Party at Dogyard.",
+    directionsBody: "",
     directionsNote:
       "Dogyard on the map: https://maps.app.goo.gl/HWwEj7whNaJapLkb7\nPublic from Oslo S: https://maps.app.goo.gl/y95KnMzcdAs4HsbZ8\nDrive from E6: https://maps.app.goo.gl/Q9FKnybNbZuyY9hc6\nDrive from E18: https://maps.app.goo.gl/DgTYfLUzGPWgLiHAA",
     hotelsTitle: "Hotels etc.",
@@ -23,10 +26,12 @@ const translations = {
       "The venue is right by the subway station, on line 5 that loops \"the entire city\".",
     hotelsNote:
       "Close to the venue:\nRadisson RED Økern: https://share.google/kCYy1UEHJBlxPYlzc\nQuality Hasle Linie: https://share.google/ai0hAa7EHGComzxro",
-    practicalTitle: "Program",
+    dressTitle: "Dress code",
+    dressBody: "Just wear something you feel great in!",
+    practicalTitle: "Program (TBD)",
     practicalBody:
-      "...",
-    practicalNote: "Coming soon",
+      "Amazing singer no. 1\nSpeech\nAmazing band 🤘\nStand-up?\nYou? Robot-dancing? Sure....\nAmazing snger no. 2\nAmazing DJ no. 1\nAmazing DJ no. 2",
+    practicalNote: "",
     footerBody: "..."
   },
   no: {
@@ -36,11 +41,15 @@ const translations = {
     heroTitle: "Maria & Aron",
     heroBody:
       "Vi skal gifte oss!",
-    heroDates: ["Fest 25. april @ Dogyard"],
+    heroDates: ["25. april @ Dogyard", "Festen starter 19:30"],
     rsvpTitle: "Svar vennligst",
     rsvpBody:
       "Svar innen 1. april.",
     rsvpNote: "Svar her: https://forms.gle/SwN1yks1u1Gv6xUD6",
+    infoTitle: "Info",
+    infoBody: "",
+    infoNote:
+      "Festen er for voksne. Hvis noen ungdommer under 20 ønsker å delta er det mulig å gi dem omvendt skjenkebånd. Si i så fall fra i god tid!\nInvitasjon til middag for de aller nærmeste kommer som separat invitasjon.\nDen formelle vielsen er på Rådhuset den 24. april, med begrenset plass.",
     directionsTitle: "Veibeskrivelse",
     directionsBody:
       "Fest på Dogyard.",
@@ -51,10 +60,12 @@ const translations = {
       "Lokalet ligger rett ved T-banen, på linje 5 Ringen, som omfatter \"hele byen\".",
     hotelsNote:
       "Nær lokalet:\nRadisson RED Økern: https://share.google/kCYy1UEHJBlxPYlzc\nQuality Hasle Linie: https://share.google/ai0hAa7EHGComzxro",
-    practicalTitle: "Program",
+    dressTitle: "Kleskode",
+    dressBody: "Bare ha på deg noe du føler deg fin i!",
+    practicalTitle: "Program (TBD)",
     practicalBody:
-      "...",
-    practicalNote: "Mer informasjon kommer",
+      "Fantastisk sanger nr. 1\nTale\nFantastisk band 🤘\nStand-up?\nDu? Robotdans? Klart det....\nFantastisk sanger nr. 2\nFantastisk DJ nr. 1\nFantastisk DJ nr. 2",
+    practicalNote: "",
     footerBody: "..."
   }
 };

@@ -7,22 +7,40 @@ const languageLabel = (code) => {
   return code;
 };
 
-const Section = ({ title, body, note, id, className }) => {
+const Section = ({
+  title,
+  body,
+  note,
+  id,
+  className,
+  noteClass,
+  noteAsList,
+  bodyAsList,
+  bodyClass,
+}) => {
   const renderNoteLines = (text) => {
     return text.split("\n").map((line, index) => {
       const match = line.match(/^(.*?):\s*(https?:\/\/\S+)\s*$/);
       if (match) {
         const [, label, url] = match;
-        return (
-          <p key={`${id}-note-${index}`}>
-            <a href={url} target="_blank" rel="noreferrer">
-              {label}
-            </a>
-          </p>
+        const content = (
+          <a href={url} target="_blank" rel="noreferrer">
+            {label}
+          </a>
+        );
+
+        return noteAsList ? (
+          <li key={`${id}-note-${index}`}>{content}</li>
+        ) : (
+          <p key={`${id}-note-${index}`}>{content}</p>
         );
       }
 
-      return <p key={`${id}-note-${index}`}>{line}</p>;
+      return noteAsList ? (
+        <li key={`${id}-note-${index}`}>{line}</li>
+      ) : (
+        <p key={`${id}-note-${index}`}>{line}</p>
+      );
     });
   };
 
@@ -31,9 +49,25 @@ const Section = ({ title, body, note, id, className }) => {
       <div className="panel__header">
         <h2>{title}</h2>
       </div>
-      <p>{body}</p>
+      {body ? (
+        bodyAsList ? (
+          <ul className={`panel__body-list${bodyClass ? ` ${bodyClass}` : ""}`}>
+            {body.split("\n").map((line, index) => (
+              <li key={`${id}-body-${index}`}>{line}</li>
+            ))}
+          </ul>
+        ) : (
+          <p>{body}</p>
+        )
+      ) : null}
       {note ? (
-        <div className="panel__note">{renderNoteLines(note)}</div>
+        <div className={`panel__note${noteClass ? ` ${noteClass}` : ""}`}>
+          {noteAsList ? (
+            <ul className="panel__note-list">{renderNoteLines(note)}</ul>
+          ) : (
+            renderNoteLines(note)
+          )}
+        </div>
       ) : null}
     </section>
   );
@@ -102,22 +136,38 @@ export default function App() {
           className="panel--wide"
         />
         <Section
+          id="info"
+          title={t.infoTitle}
+          body={t.infoBody}
+          note={t.infoNote}
+          noteClass="panel__note--fine"
+          noteAsList
+        />
+        <Section
           id="directions"
           title={t.directionsTitle}
           body={t.directionsBody}
           note={t.directionsNote}
         />
         <Section
-          id="hotels"
-          title={t.hotelsTitle}
-          body={t.hotelsBody}
-          note={t.hotelsNote}
+          id="dress"
+          title={t.dressTitle}
+          body={t.dressBody}
+          className="panel--dress"
         />
         <Section
           id="practical"
           title={t.practicalTitle}
           body={t.practicalBody}
           note={t.practicalNote}
+          bodyAsList
+          bodyClass="panel__body-list--dim"
+        />
+        <Section
+          id="hotels"
+          title={t.hotelsTitle}
+          body={t.hotelsBody}
+          note={t.hotelsNote}
         />
       </main>
 
