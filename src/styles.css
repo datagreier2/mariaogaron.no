@@ -294,6 +294,28 @@ body {
   --panel-base: var(--lavender);
   --panel-hover: var(--panel);
 }
+
+.panel--info {
+  --panel-base: var(--sky);
+  --panel-hover: var(--panel-alt);
+  background: var(--sky);
+}
+
+.panel--info:hover,
+.panel--info:focus-within {
+  background: var(--panel-alt);
+}
+
+.panel--hotels {
+  --panel-base: var(--salmon);
+  --panel-hover: var(--lavender);
+  background: var(--salmon);
+}
+
+.panel--hotels:hover,
+.panel--hotels:focus-within {
+  background: var(--lavender);
+}
 .panel__header {
   display: flex;
   justify-content: space-between;

@@ -11,7 +11,7 @@ const translations = {
     heroDates: ["25 April @ Dogyard", "Party starts at 19:30"],
     rsvpTitle: "RSVP",
     rsvpBody:
-      "Please RSVP by April 1.",
+      "Please RSVP by April 1st.",
     rsvpNote: "Respond here: https://forms.gle/SwN1yks1u1Gv6xUD6",
     infoTitle: "Info",
     infoBody: "",

@@ -142,6 +142,7 @@ export default function App() {
           note={t.infoNote}
           noteClass="panel__note--fine"
           noteAsList
+          className="panel--info"
         />
         <Section
           id="gifts"
@@ -173,6 +174,7 @@ export default function App() {
           title={t.hotelsTitle}
           body={t.hotelsBody}
           note={t.hotelsNote}
+          className="panel--hotels"
         />
       </main>
 
