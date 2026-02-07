@@ -144,6 +144,11 @@ export default function App() {
           noteAsList
         />
         <Section
+          id="gifts"
+          title={t.giftsTitle}
+          body={t.giftsBody}
+        />
+        <Section
           id="directions"
           title={t.directionsTitle}
           body={t.directionsBody}

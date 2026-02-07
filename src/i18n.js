@@ -17,6 +17,9 @@ const translations = {
     infoBody: "",
     infoNote:
       "The party is for adults. If any youths under 20 want to attend, it's possible to give them inverted alcohol wristbands. Let us know well in advance!\nInvitation to dinner for the closest family and friends will come as a separate invitation.\nThe formal ceremony is at Rådhuset on April 24, with limited space.",
+    giftsTitle: "Gifts",
+    giftsBody:
+      "We're not maxing out our credit cards on this party and neither should you. We already have all the fundue sets and silverware we need. If you'd like to give a gift, we'd love something you made yourself, something fun, or a contribution to the honeymoon.",
     directionsTitle: "Directions",
     directionsBody: "",
     directionsNote:
@@ -50,6 +53,9 @@ const translations = {
     infoBody: "",
     infoNote:
       "Festen er for voksne. Hvis noen ungdommer under 20 ønsker å delta er det mulig å gi dem omvendt skjenkebånd. Si i så fall fra i god tid!\nInvitasjon til middag for de aller nærmeste kommer som separat invitasjon.\nDen formelle vielsen er på Rådhuset den 24. april, med begrenset plass.",
+    giftsTitle: "Gaver",
+    giftsBody:
+      "Vi blakker oss ikke på dette kalaset, og det skal ikke du heller. Vi har alt vi trenger av dessertvinsglass og suppeterriner. Hvis du vil gi en gave, ønsker vi oss noe du har laget selv, noe gøyalt, eller et bidrag til bryllupsreise.",
     directionsTitle: "Veibeskrivelse",
     directionsBody:
       "Fest på Dogyard.",
