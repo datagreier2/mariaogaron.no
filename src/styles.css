@@ -3,6 +3,7 @@
 :root {
   color-scheme: light;
   --lavender: #ffd5ff;
+  --sky: #8fd1ff;
   --ink: #131515;
   --acid: #ffff47;
   --salmon: #ffb0b0;
@@ -254,7 +255,9 @@ body {
 }
 
 .panel {
-  background: var(--panel);
+  --panel-base: var(--panel);
+  --panel-hover: var(--lavender);
+  background: var(--panel-base);
   border-radius: 0;
   padding: 28px 24px 32px;
   box-shadow: var(--shadow);
@@ -265,18 +268,24 @@ body {
   animation: riseIn 0.7s ease;
 }
 
+.panel:hover,
+.panel:focus-within {
+  background: var(--panel-hover);
+}
+
 .panel--wide {
   grid-column: 1 / -1;
 }
 
 .panel:nth-of-type(2) {
-  background: var(--panel-alt);
+  --panel-base: var(--panel-alt);
+  --panel-hover: var(--sky);
 }
 
 .panel:nth-of-type(3) {
-  background: var(--lavender);
+  --panel-base: var(--lavender);
+  --panel-hover: var(--panel);
 }
-
 .panel__header {
   display: flex;
   justify-content: space-between;
