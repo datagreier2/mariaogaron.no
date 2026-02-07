@@ -108,6 +108,12 @@ export default function App() {
           note={t.directionsNote}
         />
         <Section
+          id="hotels"
+          title={t.hotelsTitle}
+          body={t.hotelsBody}
+          note={t.hotelsNote}
+        />
+        <Section
           id="practical"
           title={t.practicalTitle}
           body={t.practicalBody}

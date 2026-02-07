@@ -18,6 +18,11 @@ const translations = {
       "Party at Dogyard.",
     directionsNote:
       "Dogyard on the map: https://maps.app.goo.gl/HWwEj7whNaJapLkb7\nPublic from Oslo S: https://maps.app.goo.gl/y95KnMzcdAs4HsbZ8\nDrive from E6: https://maps.app.goo.gl/Q9FKnybNbZuyY9hc6\nDrive from E18: https://maps.app.goo.gl/DgTYfLUzGPWgLiHAA",
+    hotelsTitle: "Hotels etc.",
+    hotelsBody:
+      "The venue is right by the subway station, on line 5 that loops \"the entire city\".",
+    hotelsNote:
+      "Close to the venue:\nRadisson RED Økern: https://share.google/kCYy1UEHJBlxPYlzc\nQuality Hasle Linie: https://share.google/ai0hAa7EHGComzxro",
     practicalTitle: "Program",
     practicalBody:
       "...",
@@ -41,6 +46,11 @@ const translations = {
       "Fest på Dogyard.",
     directionsNote:
       "Dogyard på kartet: https://maps.app.goo.gl/HWwEj7whNaJapLkb7\nKollektiv fra Oslo S: https://maps.app.goo.gl/y95KnMzcdAs4HsbZ8\nKjøring fra E6: https://maps.app.goo.gl/Q9FKnybNbZuyY9hc6\nKjøring fra E18: https://maps.app.goo.gl/DgTYfLUzGPWgLiHAA",
+    hotelsTitle: "Hotell osv.",
+    hotelsBody:
+      "Lokalet ligger rett ved T-banen, på linje 5 Ringen, som omfatter \"hele byen\".",
+    hotelsNote:
+      "Nær lokalet:\nRadisson RED Økern: https://share.google/kCYy1UEHJBlxPYlzc\nQuality Hasle Linie: https://share.google/ai0hAa7EHGComzxro",
     practicalTitle: "Program",
     practicalBody:
       "...",
