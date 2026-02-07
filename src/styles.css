@@ -316,6 +316,28 @@ body {
 .panel--hotels:focus-within {
   background: var(--lavender);
 }
+
+.panel--serving {
+  --panel-base: var(--panel);
+  --panel-hover: var(--lavender);
+  background: var(--panel);
+}
+
+.panel--serving:hover,
+.panel--serving:focus-within {
+  background: var(--lavender);
+}
+
+.panel--gifts {
+  --panel-base: var(--lavender);
+  --panel-hover: var(--panel);
+  background: var(--lavender);
+}
+
+.panel--gifts:hover,
+.panel--gifts:focus-within {
+  background: var(--panel);
+}
 .panel__header {
   display: flex;
   justify-content: space-between;
@@ -336,7 +358,7 @@ body {
   color: var(--muted);
 }
 
-.panel p a {
+.panel > p a {
   color: inherit;
   text-decoration: underline;
   font-weight: 600;

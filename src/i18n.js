@@ -21,6 +21,9 @@ const translations = {
     giftsTitle: "Gifts",
     giftsBody:
       "We're not maxing out our credit cards on this party and neither should you. We already have all the fondue sets and silverware we need. If you'd like to give a gift, we'd love something you made yourself, something fun, or a contribution to the honeymoon.",
+    servingTitle: "Serving",
+    servingNote:
+      "Snacks!\nKake!\nContinental-standard bar, open until 03:00\nExtra lovely wine? (TBD)",
     directionsTitle: "Directions",
     directionsBody: "",
     directionsNote:
@@ -58,9 +61,12 @@ const translations = {
     giftsTitle: "Gaver",
     giftsBody:
       "Vi blakker oss ikke på dette kalaset, og det skal ikke du heller. Vi har alt vi trenger av dessertvinsglass og suppeterriner. Hvis du vil gi en gave, ønsker vi oss noe du har laget selv, noe gøyalt, eller et bidrag til bryllupsreise.",
+    servingTitle: "Servering",
+    servingNote:
+      "Snacks!\nKake!\nBar av kontinental standard, åpen til 03:00\nEkstra herlig vin? (TBD)",
     directionsTitle: "Veibeskrivelse",
     directionsBody:
-      "Fest på Dogyard.",
+      "Festen er på Dogyard.",
     directionsNote:
       "Dogyard på kartet: https://maps.app.goo.gl/HWwEj7whNaJapLkb7\nKollektiv fra Oslo S: https://maps.app.goo.gl/y95KnMzcdAs4HsbZ8\nKjøring fra E6: https://maps.app.goo.gl/Q9FKnybNbZuyY9hc6\nKjøring fra E18: https://maps.app.goo.gl/DgTYfLUzGPWgLiHAA",
     hotelsTitle: "Hotell osv.",

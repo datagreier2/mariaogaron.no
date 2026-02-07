@@ -20,7 +20,7 @@ const Section = ({
 }) => {
   const renderInline = (text) => {
     const parts = [];
-    const pattern = /(https?:\/\/\S+)|\baron\.social\b/g;
+    const pattern = /(https?:\/\/\S+)|\baron\.social\b|\bDogyard\b/g;
     let lastIndex = 0;
     let match;
 
@@ -37,7 +37,7 @@ const Section = ({
           </a>
         );
         if (trailing) parts.push(trailing);
-      } else {
+      } else if (match[0] === "aron.social") {
         parts.push(
           <a
             key={`${id}-inline-${match.index}`}
@@ -46,6 +46,17 @@ const Section = ({
             rel="noreferrer"
           >
             aron.social
+          </a>
+        );
+      } else {
+        parts.push(
+          <a
+            key={`${id}-inline-${match.index}`}
+            href="https://www.dogyard.no"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Dogyard
           </a>
         );
       }
@@ -186,9 +197,17 @@ export default function App() {
           className="panel--info"
         />
         <Section
+          id="serving"
+          title={t.servingTitle}
+          note={t.servingNote}
+          noteAsList
+          className="panel--serving"
+        />
+        <Section
           id="gifts"
           title={t.giftsTitle}
           body={t.giftsBody}
+          className="panel--gifts"
         />
         <Section
           id="directions"
