@@ -49,7 +49,7 @@ const translations = {
     heroBody:
       "Vi skal gifte oss!",
     heroDates: ["25. april @ Dogyard", "Festen starter 19:30"],
-    rsvpTitle: "Svar vennligst",
+    rsvpTitle: "Svar ønskes",
     rsvpBody:
       "Svar innen 1. april.",
     rsvpNote: "Svar her: https://forms.gle/SwN1yks1u1Gv6xUD6",
