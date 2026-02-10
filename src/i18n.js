@@ -21,7 +21,7 @@ const translations = {
     giftsTitle: "Gifts",
     giftsBody:
       "We're not maxing out our credit cards on this party and neither should you. We already have all the fondue sets and silverware we need. If you'd like to give a gift, we'd love something you made yourself, something fun, or a contribution to the honeymoon.",
-    servingTitle: "Serving",
+    servingTitle: "Food & Drinks",
     servingNote:
       "Snacks!\nCake!\nContinental-standard bar, open until 03:00\nExtra lovely wine? (TBD)",
     directionsTitle: "Directions",
