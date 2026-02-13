@@ -20,7 +20,7 @@ const Section = ({
 }) => {
   const renderInline = (text) => {
     const parts = [];
-    const pattern = /(https?:\/\/\S+)|\baron\.social\b|\bDogyard\b/g;
+    const pattern = /(https?:\/\/\S+)|\baron\.social\b|\bDogyard\b|\boyvind\.aamold@gmail\.com\b/g;
     let lastIndex = 0;
     let match;
 
@@ -46,6 +46,12 @@ const Section = ({
             rel="noreferrer"
           >
             aron.social
+          </a>
+        );
+      } else if (match[0] === "oyvind.aamold@gmail.com") {
+        parts.push(
+          <a key={`${id}-inline-${match.index}`} href="mailto:oyvind.aamold@gmail.com">
+            oyvind.aamold@gmail.com
           </a>
         );
       } else {
@@ -104,9 +110,17 @@ const Section = ({
       {body ? (
         bodyAsList ? (
           <ul className={`panel__body-list${bodyClass ? ` ${bodyClass}` : ""}`}>
-            {body.split("\n").map((line, index) => (
-              <li key={`${id}-body-${index}`}>{line}</li>
-            ))}
+            {body.split("\n").map((line, index) => {
+              const isScenemesterLine = line.includes("truls.hannemyr@gmail.com");
+              return (
+                <li
+                  key={`${id}-body-${index}`}
+                  className={isScenemesterLine ? "panel__body-list-item--full" : undefined}
+                >
+                  {line}
+                </li>
+              );
+            })}
           </ul>
         ) : (
           <p>{renderInline(body)}</p>

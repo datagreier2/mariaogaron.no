@@ -379,6 +379,10 @@ body {
   opacity: 0.5;
 }
 
+.panel__body-list--dim .panel__body-list-item--full {
+  opacity: 1;
+}
+
 .panel__note {
   margin-top: 16px;
   font-size: 17px;
