@@ -37,7 +37,7 @@ const translations = {
     dressBody: "Just wear something you feel great in!",
     practicalTitle: "Program (TBD)",
     practicalBody:
-      "Agnes Stock (singer) **\nSpeech?\nWedding band 🤘 **\nSecret act\nMartin spins guilty pleasures from the DJ booth **\nDJ keeps the dance floor going into the late hours**\nScenemester: truls.hannemyr@gmail.com",
+      "Agnes Stock (singer) **\nSpeeches **\nWedding band 🤘 **\nSecret act\nWedding band pt. II 🤘🤘 **\nMartin spins guilty pleasures from the DJ booth **\nDJ keeps the dance floor going into the late hours**\nMC: truls.hannemyr@gmail.com",
     practicalNote: "",
     footerBody: "..."
   },
@@ -78,7 +78,7 @@ const translations = {
     dressBody: "Bare ha på deg noe du føler deg fin i!",
     practicalTitle: "Program (TBD)",
     practicalBody:
-      "Agnes Stock (sanger) **\nTale?\nBryllupsband 🤘 **\nHemmelig innslag\nMartin spinner guilty pleasures fra DJ-båsen **\nDJ spiller opp til dans i det sene timer**\nScenemester: truls.hannemyr@gmail.com",
+      "Agnes Stock (sanger) **\nTaler **\nBryllupsband 🤘 **\nHemmelig innslag\nBryllupsband del II 🤘🤘 **\nMartin spinner guilty pleasures fra DJ-båsen **\nDJ spiller opp til dans i de sene timer**\nScenemester: truls.hannemyr@gmail.com",
     practicalNote: "",
     footerBody: "..."
   }
