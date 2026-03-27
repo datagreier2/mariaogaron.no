@@ -383,6 +383,11 @@ body {
   opacity: 1;
 }
 
+.panel__body-list-item--scenemester {
+  font-style: italic;
+  font-weight: 600;
+}
+
 .panel__note {
   margin-top: 16px;
   font-size: 17px;

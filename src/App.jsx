@@ -111,13 +111,15 @@ const Section = ({
         bodyAsList ? (
           <ul className={`panel__body-list${bodyClass ? ` ${bodyClass}` : ""}`}>
             {body.split("\n").map((line, index) => {
-              const isScenemesterLine = line.includes("truls.hannemyr@gmail.com");
+              const isScenemester = line.includes("truls.hannemyr@gmail.com");
+              const isFull = isScenemester || line.includes("**");
+              const displayLine = line.replace(/\*\*/g, "").trimEnd();
               return (
                 <li
                   key={`${id}-body-${index}`}
-                  className={isScenemesterLine ? "panel__body-list-item--full" : undefined}
+                  className={[isFull ? "panel__body-list-item--full" : "", isScenemester ? "panel__body-list-item--scenemester" : ""].filter(Boolean).join(" ") || undefined}
                 >
-                  {line}
+                  {displayLine}
                 </li>
               );
             })}
