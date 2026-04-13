@@ -46,34 +46,34 @@ export const middagTranslations = {
 export const vielseTranslations = {
   en: {
     languageLabel: "Language",
-    heroTitle: "Ceremony",
+    heroTitle: "Ceremony & Lunch",
     heroBody: "In Oslo City Hall",
     heroDates: ["Friday 24 April @ Oslo City Hall", "Arrive 10:15 · Ceremony 10:25"],
     whenTitle: "When & Where",
     whenNote:
-      "Arrive: 10:15\nCeremony: 10:25\nMunchrommet, Oslo City Hall\nOn the map: https://maps.google.com/?q=Oslo+City+Hall,+Oslo\nNote: there may be a security check with some queuing — please factor this into your timing.",
+      "Arrive: 10:15\nCeremony: 10:25\nMunchrommet, Oslo City Hall\nOn the map: https://maps.google.com/?q=Oslo+City+Hall,+Oslo\nNote: there may be a security check with some queuing, so please factor this into your timing.",
     welcomeTitle: "Welcome",
     welcomeBody:
-      "Space at Oslo City Hall is limited, so we only have a few spots — but we'd love for you to join us for the ceremony. It's informal, so just wear something you feel great in.",
-    lunchTitle: "Lunch Afterwards",
+      "Space at Oslo City Hall is limited, so we only have a few spots, but we'd love for you to join us for the ceremony. It's informal, so just wear something you feel great in.",
+    lunchTitle: "Lunch at Theatercafeen",
     lunchBody:
-      "The ceremony only takes about 15 minutes, and after that it's lunchtime. We've booked a table — everyone is welcome to join us for lunch afterwards, at your own expense. We haven't planned anything more for the day, as we have quite a bit to sort out before the big party.",
+      "The ceremony only takes about 15 minutes, and after that it's lunchtime. We've booked a table at Theatercafeen and everyone is welcome to join us for lunch afterwards, at your own expense. We haven't planned anything more for the day, as we have quite a bit to sort out before the big party.",
     footerBody: "We look forward to celebrating with you! Maria and Aron",
   },
   no: {
     languageLabel: "Language",
-    heroTitle: "Vielse",
+    heroTitle: "Vielse & Lunch",
     heroBody: "I Oslo Rådhus",
     heroDates: ["Fredag 24. april @ Oslo rådhus", "Oppmøte 10:15 · Vielse 10:25"],
     whenTitle: "Tid og sted",
     whenNote:
-      "Oppmøte: 10:15\nVielse: 10:25\nMunchrommet, Oslo rådhus\nPå kartet: https://maps.google.com/?q=Oslo+rådhus\nMerk: det kan være sikkerhetskontroll med noe kø — ta høyde for dette i tidsberegningen.",
+      "Oppmøte: 10:15\nVielse: 10:25\nMunchrommet, Oslo rådhus\nPå kartet: https://maps.google.com/?q=Oslo+rådhus\nMerk: det kan være sikkerhetskontroll med noe kø, så ta høyde for dette i tidsberegningen.",
     welcomeTitle: "Velkommen",
     welcomeBody:
-      "Kapasiteten på rådhuset er begrenset, så vi har bare noen få plasser — men vi ønsker deg hjertelig velkommen til vielsen. Det er uformelt, så pynt deg så mye du vil.",
-    lunchTitle: "Lunsj etterpå",
+      "Kapasiteten på rådhuset er begrenset, så vi har bare noen få plasser, men vi ønsker deg hjertelig velkommen til vielsen. Det er uformelt, så pynt deg så mye du vil.",
+    lunchTitle: "Lunsj på Theatercafeen",
     lunchBody:
-      "Selve vielsen varer i ca. 15 minutter, og etterpå er det lunsjtid. Vi har booket et bord, og alle som vil er hjertelig velkomne til å bli med og spise — på egen regning. Vi har ikke lagt opp til noe mer program denne dagen, da vi har en del å ordne før den store festen.",
+      "Selve vielsen varer i ca. 15 minutter, og etterpå er det lunsjtid. Vi har booket et bord på Theatercafeen, og alle som vil er hjertelig velkomne til å bli med og spise på egen regning. Vi har ikke lagt opp til noe ytterligere program denne dagen, da vi har en del å ordne før den store festen.",
     footerBody: "Vi gleder oss masse til å feire sammen med dere! Maria og Aron",
   },
 };

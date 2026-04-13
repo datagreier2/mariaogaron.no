@@ -133,7 +133,7 @@ export default function Vielse() {
           id="lunch"
           title={t.lunchTitle}
           body={t.lunchBody}
-          className="panel--gifts"
+          className="panel--info"
         />
       </main>
 
