@@ -24,7 +24,7 @@ export const middagTranslations = {
   no: {
     languageLabel: "Language",
     heroKicker: "Bryllupsmiddag",
-    heroTitle: "Bryllupsbuffet",
+    heroTitle: "Bryllups\u00ADbuffet",
     heroBody: "Du er invitert til middag!",
     heroDates: ["Lørdag 25. april @ Dogyard", "Middag kl. 16:00"],
     welcomeTitle: "Velkommen",

@@ -20,6 +20,11 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  min-width: 0;
+}
+
+html, body {
+  overflow-x: hidden;
 }
 
 body {
@@ -395,6 +400,8 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--ink);
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .panel__note--fine {
@@ -438,6 +445,8 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   line-height: 1.4;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .footer {
