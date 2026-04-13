@@ -1,5 +1,83 @@
 import { useEffect, useMemo, useState } from "react";
 
+export const middagTranslations = {
+  en: {
+    languageLabel: "Language",
+    heroKicker: "Wedding Dinner",
+    heroTitle: "Wedding Buffet",
+    heroBody: "You're invited to dinner!",
+    heroDates: ["Saturday 25 April @ Dogyard", "Dinner starts at 16:00"],
+    welcomeTitle: "Welcome",
+    welcomeBody:
+      "We'd like to invite you to dinner before the wedding reception. We're running a bit late with this invitation, but we hope it works for you. This will be a chance for family and close friends to get to know each other and share a meal together before the party begins. If you'd like to give a toast in a more intimate setting, there will be an opportunity for that.",
+    whenTitle: "When & Where",
+    whenNote:
+      "Saturday 25 April, 16:00\nDogyard\nSame venue as the party",
+    foodTitle: "Food",
+    foodBody:
+      "We'll be serving a buffet with a selection of dishes — including both meat options and a fully **vegetarian** alternative.",
+    contactTitle: "Toastmaster",
+    contactBody:
+      "Get in touch with Øyvind at oyvind.aamold@gmail.com.",
+    footerBody: "We look forward to celebrating with you! Maria and Aron",
+  },
+  no: {
+    languageLabel: "Language",
+    heroKicker: "Bryllupsmiddag",
+    heroTitle: "Bryllupsbuffet",
+    heroBody: "Du er invitert til middag!",
+    heroDates: ["Lørdag 25. april @ Dogyard", "Middag kl. 16:00"],
+    welcomeTitle: "Velkommen",
+    welcomeBody:
+      "Vi har lyst til å invitere deg til middag før bryllupsfest. Vi er ganske sent ute med denne invitasjonen, men håper at det passer for deg. Dette blir en anledning for familie og nære venner til å bli kjent og spise et måltid sammen før det blir fest. Om man vil tale i en mer intim setting er det mulighet for det.",
+    whenTitle: "Tid og sted",
+    whenNote:
+      "Lørdag 25. april kl. 16:00\nDogyard\nSamme lokale som festen",
+    foodTitle: "Mat",
+    foodBody:
+      "Vi serverer buffet med et utvalg retter — inkludert kjøttretter og et fullstendig **vegetarisk** alternativ.",
+    contactTitle: "Toastmaster",
+    contactBody:
+      "Ta kontakt med Øyvind på oyvind.aamold@gmail.com.",
+    footerBody: "Vi gleder oss masse til å feire sammen med dere! Maria og Aron",
+  },
+};
+
+export const vielseTranslations = {
+  en: {
+    languageLabel: "Language",
+    heroTitle: "Ceremony",
+    heroBody: "In Oslo City Hall",
+    heroDates: ["Friday 24 April @ Oslo City Hall", "Arrive 10:15 · Ceremony 10:25"],
+    whenTitle: "When & Where",
+    whenNote:
+      "Arrive: 10:15\nCeremony: 10:25\nMunchrommet, Oslo City Hall\nOn the map: https://maps.google.com/?q=Oslo+City+Hall,+Oslo\nNote: there may be a security check with some queuing — please factor this into your timing.",
+    welcomeTitle: "Welcome",
+    welcomeBody:
+      "Space at Oslo City Hall is limited, so we only have a few spots — but we'd love for you to join us for the ceremony. It's informal, so just wear something you feel great in.",
+    lunchTitle: "Lunch Afterwards",
+    lunchBody:
+      "The ceremony only takes about 15 minutes, and after that it's lunchtime. We've booked a table — everyone is welcome to join us for lunch afterwards, at your own expense. We haven't planned anything more for the day, as we have quite a bit to sort out before the big party.",
+    footerBody: "We look forward to celebrating with you! Maria and Aron",
+  },
+  no: {
+    languageLabel: "Language",
+    heroTitle: "Vielse",
+    heroBody: "I Oslo Rådhus",
+    heroDates: ["Fredag 24. april @ Oslo rådhus", "Oppmøte 10:15 · Vielse 10:25"],
+    whenTitle: "Tid og sted",
+    whenNote:
+      "Oppmøte: 10:15\nVielse: 10:25\nMunchrommet, Oslo rådhus\nPå kartet: https://maps.google.com/?q=Oslo+rådhus\nMerk: det kan være sikkerhetskontroll med noe kø — ta høyde for dette i tidsberegningen.",
+    welcomeTitle: "Velkommen",
+    welcomeBody:
+      "Kapasiteten på rådhuset er begrenset, så vi har bare noen få plasser — men vi ønsker deg hjertelig velkommen til vielsen. Det er uformelt, så pynt deg så mye du vil.",
+    lunchTitle: "Lunsj etterpå",
+    lunchBody:
+      "Selve vielsen varer i ca. 15 minutter, og etterpå er det lunsjtid. Vi har booket et bord, og alle som vil er hjertelig velkomne til å bli med og spise — på egen regning. Vi har ikke lagt opp til noe mer program denne dagen, da vi har en del å ordne før den store festen.",
+    footerBody: "Vi gleder oss masse til å feire sammen med dere! Maria og Aron",
+  },
+};
+
 const translations = {
   en: {
     languageLabel: "Language",
