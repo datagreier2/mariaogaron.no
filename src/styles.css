@@ -428,6 +428,18 @@ body {
   background: var(--salmon);
 }
 
+.panel__warn {
+  margin-top: 16px;
+  padding: 10px 14px;
+  border: var(--stroke);
+  background: var(--acid);
+  font-size: 17px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+}
+
 .footer {
   text-align: center;
   font-size: 17px;

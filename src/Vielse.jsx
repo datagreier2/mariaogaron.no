@@ -57,7 +57,7 @@ const renderNoteLines = (text, id) => {
   });
 };
 
-const Section = ({ id, title, body, note, className }) => (
+const Section = ({ id, title, body, note, warn, className }) => (
   <section className={`panel${className ? ` ${className}` : ""}`} id={id}>
     <div className="panel__header">
       <h2>{title}</h2>
@@ -68,6 +68,7 @@ const Section = ({ id, title, body, note, className }) => (
         <ul className="panel__note-list">{renderNoteLines(note, id)}</ul>
       </div>
     ) : null}
+    {warn ? <p className="panel__warn">{warn}</p> : null}
   </section>
 );
 
@@ -121,6 +122,7 @@ export default function Vielse() {
           id="when"
           title={t.whenTitle}
           note={t.whenNote}
+          warn={t.whenWarn}
           className="panel--serving"
         />
         <Section

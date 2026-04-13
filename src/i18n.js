@@ -51,7 +51,9 @@ export const vielseTranslations = {
     heroDates: ["Friday 24 April @ Oslo City Hall", "Arrive 10:15 · Ceremony 10:25"],
     whenTitle: "When & Where",
     whenNote:
-      "Arrive: 10:15\nCeremony: 10:25\nMunchrommet, Oslo City Hall\nOn the map: https://maps.google.com/?q=Oslo+City+Hall,+Oslo\nNote: there may be a security check with some queuing, so please factor this into your timing.",
+      "Arrive: 10:15\nCeremony: 10:25\nMunchrommet, Oslo City Hall\nOn the map: https://maps.google.com/?q=Oslo+City+Hall,+Oslo",
+    whenWarn:
+      "Note: there may be a security check with some queuing, so please factor this into your timing.",
     welcomeTitle: "Welcome",
     welcomeBody:
       "Space at Oslo City Hall is limited, so we only have a few spots, but we'd love for you to join us for the ceremony. It's informal, so just wear something you feel great in.",
@@ -67,7 +69,9 @@ export const vielseTranslations = {
     heroDates: ["Fredag 24. april @ Oslo rådhus", "Oppmøte 10:15 · Vielse 10:25"],
     whenTitle: "Tid og sted",
     whenNote:
-      "Oppmøte: 10:15\nVielse: 10:25\nMunchrommet, Oslo rådhus\nPå kartet: https://maps.google.com/?q=Oslo+rådhus\nMerk: det kan være sikkerhetskontroll med noe kø, så ta høyde for dette i tidsberegningen.",
+      "Oppmøte: 10:15\nVielse: 10:25\nMunchrommet, Oslo rådhus\nPå kartet: https://maps.google.com/?q=Oslo+rådhus",
+    whenWarn:
+      "Merk: det kan være sikkerhetskontroll med noe kø, så ta høyde for dette i tidsberegningen.",
     welcomeTitle: "Velkommen",
     welcomeBody:
       "Kapasiteten på rådhuset er begrenset, så vi har bare noen få plasser, men vi ønsker deg hjertelig velkommen til vielsen. Det er uformelt, så pynt deg så mye du vil.",
