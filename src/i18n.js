@@ -103,9 +103,16 @@ const translations = {
     giftsTitle: "Gifts",
     giftsBody:
       "We're not maxing out our credit cards on this party and neither should you. We already have all the fondue sets and silverware we need. If you'd like to give a gift, we'd love something you made yourself, something fun, or a contribution to the honeymoon.",
+    giftsNoteHeading: "We have been asked for money transfer details, so here they are:",
+    giftsVippsLink: "Vipps-link",
+    giftsQrLabel: "QR code",
+    giftsVippsNumberPrefix: "Or use ",
+    giftsVippsNumberId: "3800YU",
+    giftsVippsNumberSuffix: " in Vipps",
+    giftsFromAbroad: "From abroad",
     servingTitle: "Food & Drinks",
     servingNote:
-      "Snacks!\nCake!\nContinental-standard bar, open until 03:00\nExtra lovely wine? (TBD)",
+      "Snacks!\nContinental-standard bar, open until 03:00\nExtra lovely wine? (TBD)",
     directionsTitle: "Directions",
     directionsBody: "",
     directionsNote:
@@ -143,9 +150,16 @@ const translations = {
     giftsTitle: "Gaver",
     giftsBody:
       "Vi blakker oss ikke på dette kalaset, og det skal ikke du heller. Vi har alt vi trenger av dessertvinsglass og suppeterriner. Hvis du vil gi en gave, ønsker vi oss noe du har laget selv, noe gøyalt, eller et bidrag til bryllupsreise.",
+    giftsNoteHeading: "Vi har blitt spurt om penge\u00ADoverførings\u00ADgreier, så her er det:",
+    giftsVippsLink: "Vipps-lenke",
+    giftsQrLabel: "QR-kode",
+    giftsVippsNumberPrefix: "Eller bruk ",
+    giftsVippsNumberId: "3800YU",
+    giftsVippsNumberSuffix: " i Vipps",
+    giftsFromAbroad: "Fra utlandet",
     servingTitle: "Servering",
     servingNote:
-      "Snacks!\nKake!\nBar av kontinental standard, åpen til 03:00\nEkstra herlig vin? (TBD)",
+      "Snacks!\nBar av kontinental standard, åpen til 03:00\nEkstra herlig vin? (TBD)",
     directionsTitle: "Veibeskrivelse",
     directionsBody:
       "Festen er på Dogyard.",

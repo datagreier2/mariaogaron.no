@@ -404,6 +404,19 @@ body {
   word-break: break-word;
 }
 
+.panel__note--body {
+  font-size: inherit;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: normal;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.panel__note--body .panel__note-list {
+  gap: 12px;
+}
+
 .panel__note--fine {
   text-transform: none;
   letter-spacing: 0.01em;
@@ -447,6 +460,130 @@ body {
   line-height: 1.4;
   overflow-wrap: break-word;
   word-break: break-word;
+}
+
+.panel__note-btn {
+  background: none;
+  border: none;
+  border-bottom: 3px solid var(--ink);
+  padding: 0 0 2px;
+  font: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: var(--ink);
+  cursor: pointer;
+  display: inline-block;
+}
+
+.panel__note-btn:hover,
+.panel__note-btn:focus {
+  background: var(--salmon);
+  outline: none;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(19, 21, 21, 0.65);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  background: var(--panel);
+  border: var(--stroke);
+  box-shadow: var(--shadow);
+  padding: 40px 32px 32px;
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.modal__close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: var(--ink);
+  color: #fff;
+  border: none;
+  width: 32px;
+  height: 32px;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  font-family: "Space Mono", "Courier New", monospace;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal__close:hover {
+  background: var(--salmon);
+  color: var(--ink);
+}
+
+.modal__iban {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-family: "Space Mono", "Courier New", monospace;
+}
+
+.modal__iban dt {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+  opacity: 0.6;
+  margin-bottom: 4px;
+}
+
+.modal__iban dd {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 0.05em;
+  user-select: all;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.modal__copy {
+  background: var(--ink);
+  color: #fff;
+  border: none;
+  padding: 2px 8px;
+  font-family: "Space Mono", "Courier New", monospace;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  vertical-align: middle;
+  margin-left: 8px;
+}
+
+.modal__copy:hover {
+  background: var(--salmon);
+  color: var(--ink);
+}
+
+.modal__copy--done {
+  background: var(--panel);
+  color: var(--ink);
+}
+
+.modal__img {
+  display: block;
+  max-width: min(320px, 80vw);
+  max-height: 80vh;
+  border: var(--stroke);
 }
 
 .footer {
