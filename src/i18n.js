@@ -167,7 +167,7 @@ const translations = {
       "Dogyard på kartet: https://maps.app.goo.gl/HWwEj7whNaJapLkb7\nKollektiv fra Oslo S: https://maps.app.goo.gl/y95KnMzcdAs4HsbZ8\nKjøring fra E6: https://maps.app.goo.gl/Q9FKnybNbZuyY9hc6\nKjøring fra E18: https://maps.app.goo.gl/DgTYfLUzGPWgLiHAA",
     hotelsTitle: "Hotell osv.",
     hotelsBody:
-      "Lokalet ligger rett ved T-banen, på linje 5 Ringen, som omfatter \"hele byen\".",
+      "Lokalet ligger rett ved T-banen, på linje 5 Ringen, som omfatter \«hele byen\».",
     hotelsNote:
       "Nær lokalet:\nRadisson RED Økern: https://share.google/kCYy1UEHJBlxPYlzc\nQuality Hasle Linie: https://share.google/ai0hAa7EHGComzxro",
     dressTitle: "Kleskode",
