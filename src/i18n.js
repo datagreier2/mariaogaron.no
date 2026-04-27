@@ -243,19 +243,15 @@ const normalizeLanguage = (value) => {
 };
 
 export const useI18n = () => {
-  const [language, setLanguage] = useState("en");
-
-  useEffect(() => {
-    const saved = window.localStorage.getItem(STORAGE_KEY);
-    if (saved && supported.includes(saved)) {
-      setLanguage(saved);
-      return;
-    }
-    const detected = normalizeLanguage(
+  const [language, setLanguage] = useState(() => {
+    try {
+      const saved = window.localStorage.getItem(STORAGE_KEY);
+      if (saved && supported.includes(saved)) return saved;
+    } catch {}
+    return normalizeLanguage(
       (navigator.languages && navigator.languages[0]) || navigator.language
     );
-    setLanguage(detected);
-  }, []);
+  });
 
   useEffect(() => {
     document.documentElement.lang = language;
