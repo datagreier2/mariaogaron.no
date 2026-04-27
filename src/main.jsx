@@ -5,7 +5,10 @@ import Middag from "./Middag.jsx";
 import Vielse from "./Vielse.jsx";
 
 const path = window.location.pathname.replace(/\/$/, "");
-const Root = path === "/middag" ? Middag : path === "/vielse" ? Vielse : App;
+const Root =
+  path === "/middag" ? Middag :
+  path === "/vielse" ? Vielse :
+  App;
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

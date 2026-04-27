@@ -82,15 +82,52 @@ export const vielseTranslations = {
   },
 };
 
+export const uploadTranslations = {
+  en: {
+    panelTitle: "Choose files",
+    nameLabel: "Your name",
+    namePlaceholder: "Enter your name",
+    dropzoneLabel: "Drag and drop photos or videos here",
+    dropzoneSub: "or click to browse",
+    dropzoneAdd: "+ Add more files",
+    dropzoneAriaLabel: "Drag and drop files, or click to browse",
+    challengeLoading: "Loading challenge…",
+    challengeFailed: "Could not load challenge.",
+    challengeRetry: "Try again",
+    mathPlaceholder: "Answer",
+    submitLabel: "Upload",
+    submitUploading: "Uploading…",
+    fileSingular: "file",
+    filePlural: "files",
+    removePrefix: "Remove",
+  },
+  no: {
+    panelTitle: "Velg filer",
+    nameLabel: "Ditt navn",
+    namePlaceholder: "Skriv inn navnet ditt",
+    dropzoneLabel: "Dra og slipp bilder eller videoer her",
+    dropzoneSub: "eller klikk for å velge",
+    dropzoneAdd: "+ Legg til flere filer",
+    dropzoneAriaLabel: "Dra og slipp filer, eller klikk for å velge",
+    challengeLoading: "Laster oppgave…",
+    challengeFailed: "Kunne ikke laste oppgave.",
+    challengeRetry: "Prøv igjen",
+    mathPlaceholder: "Svar",
+    submitLabel: "Last opp",
+    submitUploading: "Laster opp…",
+    fileSingular: "fil",
+    filePlural: "filer",
+    removePrefix: "Fjern",
+  },
+};
+
 const translations = {
   en: {
     languageLabel: "Language",
     languageName: "English",
-    heroKicker: "Invitation",
     heroTitle: "Maria & Aron",
     heroBody:
-      "We're getting married!",
-    heroDates: ["25 April @ Dogyard", "Party starts at 19:30"],
+      "Thank you for making our day so special!",
     rsvpTitle: "RSVP",
     rsvpBody:
       "Please RSVP by April 1st.",
@@ -128,16 +165,19 @@ const translations = {
     practicalBody:
       "Agnes Stock (singer) **\nSpeeches **\nWedding band 🤘 **\nSecret act\nWedding band pt. II 🤘🤘 **\nMartin spins guilty pleasures from the DJ booth **\nDJ keeps the dance floor going into the late hours**\nMC: truls.hannemyr@gmail.com",
     practicalNote: "",
+    uploadPanelTitle: "Photos & video",
+    uploadPanelBody: "We really appreciate it if you want to upload photos and videos from the weekend!",
+    uploadPanelLink: "Upload your photos below!",
+    lostTitle: "Forgot something?",
+    lostBody: "Contact Maria 🙂",
     footerBody: "..."
   },
   no: {
     languageLabel: "Language",
     languageName: "Norsk",
-    heroKicker: "Invitasjon",
     heroTitle: "Maria & Aron",
     heroBody:
-      "Vi skal gifte oss!",
-    heroDates: ["25. april @ Dogyard", "Festen starter 19:30"],
+      "Tusen takk til alle som kom i vårt bryllup!",
     rsvpTitle: "Svar ønskes",
     rsvpBody:
       "Svar innen 1. april.",
@@ -176,6 +216,11 @@ const translations = {
     practicalBody:
       "Agnes Stock (sanger) **\nTaler **\nBryllupsband 🤘 **\nHemmelig innslag\nBryllupsband del II 🤘🤘 **\nMartin spinner guilty pleasures fra DJ-båsen **\nDJ spiller opp til dans i de sene timer**\nScenemester: truls.hannemyr@gmail.com",
     practicalNote: "",
+    uploadPanelTitle: "Bilder & video",
+    uploadPanelBody: "Vi setter veldig pris på om du vil laste opp bilder og videoer du tok i bryllupet! 😊",
+    uploadPanelLink: "Last opp bildene dine under!",
+    lostTitle: "Gjenglemt?",
+    lostBody: "Si i fra til Maria 🙂",
     footerBody: "..."
   }
 };

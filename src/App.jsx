@@ -1,45 +1,6 @@
-import { useEffect, useState } from "react";
 import { useI18n } from "./i18n";
+import Upload from "./Upload.jsx";
 import "./styles.css";
-
-const Modal = ({ open, onClose, children }) => {
-  useEffect(() => {
-    if (!open) return;
-    const onKey = (e) => { if (e.key === "Escape") onClose(); };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [open, onClose]);
-
-  if (!open) return null;
-  return (
-    <div className="modal-overlay" onClick={onClose}>
-      <div className="modal" onClick={(e) => e.stopPropagation()}>
-        <button className="modal__close" onClick={onClose} aria-label="Close">×</button>
-        {children}
-      </div>
-    </div>
-  );
-};
-
-const CopyButton = ({ text, label }) => {
-  const [copied, setCopied] = useState(false);
-  const copy = () => {
-    navigator.clipboard.writeText(text);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1500);
-  };
-  return (
-    <button className={`modal__copy${copied ? " modal__copy--done" : ""}`} onClick={copy}>
-      {copied ? "✓" : label}
-    </button>
-  );
-};
-
-const languageLabel = (code) => {
-  if (code === "no") return "Norsk";
-  if (code === "en") return "English";
-  return code;
-};
 
 const Section = ({
   title,
@@ -183,137 +144,42 @@ const Section = ({
 
 export default function App() {
   const { language, t, updateLanguage, supported } = useI18n();
-  const [qrOpen, setQrOpen] = useState(false);
-  const [ibanOpen, setIbanOpen] = useState(false);
 
   return (
     <div className="page">
-      <Modal open={qrOpen} onClose={() => setQrOpen(false)}>
-        <img className="modal__img" src="/qr-brll2.png" alt="Vipps QR code" />
-      </Modal>
-      <Modal open={ibanOpen} onClose={() => setIbanOpen(false)}>
-        <dl className="modal__iban">
-          <dt>IBAN</dt>
-          <dd>NO06 9230 3461 789 <CopyButton text="NO0692303461789" label="[copy]" /></dd>
-          <dt>BIC/SWIFT</dt>
-          <dd>KBNONO22XXX <CopyButton text="KBNONO22XXX" label="[copy]" /></dd>
-        </dl>
-      </Modal>
       <header className="hero">
-        <img className="hero__image" src="/couple.png" alt="Maria and Aron" />
-        <div className="hero__top">
-          <label className="language">
-            <span className="language__label">{t.languageLabel}</span>
-            <span className="language__value">
-              {languageLabel(language)}
-            </span>
-            <select
-              id="language"
-              aria-label={t.languageLabel}
-              value={language}
-              onChange={(event) => updateLanguage(event.target.value)}
+        <img className="hero__image" src="/couple2.png" alt="Maria and Aron" />
+        <div className="lang-toggle" role="group" aria-label="Language">
+          {supported.map((code) => (
+            <button
+              key={code}
+              type="button"
+              className={`lang-toggle__btn${language === code ? " lang-toggle__btn--active" : ""}`}
+              onClick={() => updateLanguage(code)}
+              aria-pressed={language === code}
             >
-              {supported.map((code) => (
-                <option key={code} value={code}>
-                  {languageLabel(code)}
-                </option>
-              ))}
-            </select>
-          </label>
+              {code.toUpperCase()}
+            </button>
+          ))}
         </div>
         <h1>{t.heroTitle}</h1>
-        <div className="hero__kicker">{t.heroKicker}</div>
         <p>{t.heroBody}</p>
-        <div className="hero__dates">
-          {t.heroDates.map((line) => {
-            const separator = " @ ";
-            if (line.includes(separator)) {
-              const [main, sub] = line.split(separator);
-              return (
-                <span key={line}>
-                  {main}
-                  <br className="hero__dates-break" />
-                  <span className="hero__dates-sub">
-                    @{" "}
-                    <a className="hero__dates-link" href="#directions">
-                      {sub}
-                    </a>
-                  </span>
-                </span>
-              );
-            }
-
-            return <span key={line}>{line}</span>;
-          })}
-        </div>
       </header>
 
       <main className="grid">
         <Section
-          id="rsvp"
-          title={t.rsvpTitle}
-          body={t.rsvpBody}
-          note={t.rsvpNote}
-          className="panel--wide"
-        />
-        <Section
-          id="info"
-          title={t.infoTitle}
-          body={t.infoBody}
-          note={t.infoNote}
-          noteClass="panel__note--fine"
-          noteAsList
-          className="panel--info"
-        />
-        <Section
-          id="gifts"
-          title={t.giftsTitle}
-          body={t.giftsBody}
-          noteHeading={t.giftsNoteHeading}
-          noteClass="panel__note--body"
-          noteChildren={
-            <ul className="panel__note-list">
-              <li><a href="https://qr.vipps.no/box/88203800-5e75-4ea6-b807-767ec09a6fcc/pay-in" target="_blank" rel="noreferrer">{t.giftsVippsLink}</a></li>
-              <li><button className="panel__note-btn" onClick={() => setQrOpen(true)}>{t.giftsQrLabel}</button></li>
-              <li>{t.giftsVippsNumberPrefix}<strong>{t.giftsVippsNumberId}</strong>{t.giftsVippsNumberSuffix}</li>
-              <li><button className="panel__note-btn" onClick={() => setIbanOpen(true)}>{t.giftsFromAbroad}</button></li>
-            </ul>
-          }
+          id="upload-intro"
+          title={t.uploadPanelTitle}
+          body={t.uploadPanelBody}
+          noteChildren={<a href="#upload-section">{t.uploadPanelLink}</a>}
           className="panel--gifts"
         />
+        <Upload />
         <Section
-          id="serving"
-          title={t.servingTitle}
-          note={t.servingNote}
-          noteAsList
-          className="panel--serving"
-        />
-        <Section
-          id="directions"
-          title={t.directionsTitle}
-          body={t.directionsBody}
-          note={t.directionsNote}
-        />
-        <Section
-          id="dress"
-          title={t.dressTitle}
-          body={t.dressBody}
-          className="panel--dress"
-        />
-        <Section
-          id="practical"
-          title={t.practicalTitle}
-          body={t.practicalBody}
-          note={t.practicalNote}
-          bodyAsList
-          bodyClass="panel__body-list--dim"
-        />
-        <Section
-          id="hotels"
-          title={t.hotelsTitle}
-          body={t.hotelsBody}
-          note={t.hotelsNote}
-          className="panel--hotels"
+          id="lost"
+          title={t.lostTitle}
+          body={t.lostBody}
+          className="panel--info"
         />
       </main>
 

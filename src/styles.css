@@ -65,7 +65,7 @@ body {
   animation: floatIn 0.7s ease;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  gap: 32px;
+  gap: 16px;
 }
 
 .hero::after {
@@ -251,6 +251,45 @@ body {
 .language:focus-within {
   outline: 3px dashed var(--ink);
   outline-offset: 3px;
+}
+
+.lang-toggle {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 3;
+  display: flex;
+  font-family: "Space Mono", "Courier New", monospace;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.lang-toggle__btn {
+  background: #fff;
+  border: var(--stroke);
+  padding: 4px 9px;
+  cursor: pointer;
+  font: inherit;
+  color: var(--ink);
+  margin-left: -3px;
+}
+
+.lang-toggle__btn:first-child {
+  margin-left: 0;
+}
+
+.lang-toggle__btn--active {
+  background: var(--ink);
+  color: #fff;
+  position: relative;
+  z-index: 1;
+}
+
+.lang-toggle__btn:not(.lang-toggle__btn--active):hover {
+  background: var(--acid);
+  position: relative;
+  z-index: 1;
 }
 
 .grid {
@@ -614,6 +653,274 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* --- Upload page --- */
+
+.upload {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.upload__name-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.upload__name-label {
+  font-family: "Space Mono", "Courier New", monospace;
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.upload__name-input {
+  font-family: "Space Grotesk", "Helvetica Neue", sans-serif;
+  font-size: 18px;
+  border: var(--stroke);
+  background: #fff;
+  padding: 10px 14px;
+  width: 100%;
+  max-width: 360px;
+  color: var(--ink);
+  box-shadow: 6px 6px 0 rgba(19, 21, 21, 0.7);
+}
+
+.upload__name-input:focus {
+  outline: 3px dashed var(--ink);
+  outline-offset: 3px;
+}
+
+.upload__name-input:disabled {
+  opacity: 0.5;
+}
+
+.upload__dropzone {
+  border: var(--stroke);
+  border-style: dashed;
+  background: #fff;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 32px 24px;
+  text-align: center;
+  user-select: none;
+  transition: background 0.1s;
+}
+
+.upload__dropzone:hover,
+.upload__dropzone:focus,
+.upload__dropzone--over {
+  background: var(--acid);
+  outline: none;
+}
+
+.upload__file-input {
+  display: none;
+}
+
+.upload__dropzone-icon {
+  font-family: "Space Mono", "Courier New", monospace;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.upload__dropzone-label {
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.upload__dropzone-sub {
+  font-size: 15px;
+  opacity: 0.6;
+}
+
+.upload__dropzone-add {
+  font-family: "Space Mono", "Courier New", monospace;
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.upload__file-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.upload__file {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  border: var(--stroke);
+  background: #fff;
+}
+
+.upload__file--done {
+  background: var(--acid);
+}
+
+.upload__file--failed {
+  background: var(--salmon);
+}
+
+.upload__file--uploading {
+  background: var(--lavender);
+}
+
+.upload__file-name {
+  font-family: "Space Mono", "Courier New", monospace;
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+  flex: 1;
+}
+
+.upload__file-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.upload__file-remove {
+  background: none;
+  border: none;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 4px;
+  color: var(--ink);
+  font-family: "Space Mono", "Courier New", monospace;
+  font-weight: 700;
+}
+
+.upload__file-remove:hover {
+  background: var(--salmon);
+}
+
+.upload__progress-wrap {
+  position: relative;
+  width: 120px;
+  height: 22px;
+  border: 2px solid var(--ink);
+  background: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.upload__progress-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: var(--sky);
+  transition: width 0.1s;
+}
+
+.upload__progress-pct {
+  position: relative;
+  font-size: 12px;
+  font-family: "Space Mono", "Courier New", monospace;
+  font-weight: 700;
+  z-index: 1;
+  width: 100%;
+  text-align: center;
+}
+
+.upload__status {
+  font-family: "Space Mono", "Courier New", monospace;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.upload__challenge {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-top: var(--stroke);
+  padding-top: 24px;
+}
+
+.upload__challenge-hint {
+  font-size: 16px;
+  color: var(--muted);
+}
+
+.upload__challenge-question {
+  font-family: "Space Mono", "Courier New", monospace;
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: block;
+}
+
+.upload__challenge-input {
+  font-family: "Space Mono", "Courier New", monospace;
+  font-size: 24px;
+  font-weight: 700;
+  border: var(--stroke);
+  background: #fff;
+  padding: 10px 16px;
+  width: 160px;
+  color: var(--ink);
+  box-shadow: 6px 6px 0 rgba(19, 21, 21, 0.7);
+}
+
+.upload__challenge-input:focus {
+  outline: 3px dashed var(--ink);
+  outline-offset: 3px;
+}
+
+.upload__challenge-input:disabled {
+  opacity: 0.5;
+}
+
+.upload__actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.upload__submit {
+  font-family: "Space Mono", "Courier New", monospace;
+  font-size: 17px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: var(--ink);
+  color: #fff;
+  border: var(--stroke);
+  padding: 14px 28px;
+  cursor: pointer;
+  box-shadow: 6px 6px 0 rgba(19, 21, 21, 0.7);
+}
+
+.upload__submit:hover:not(:disabled) {
+  background: var(--acid);
+  color: var(--ink);
+}
+
+.upload__submit:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  box-shadow: none;
 }
 
 @media (max-width: 720px) {
