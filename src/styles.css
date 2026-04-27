@@ -850,6 +850,17 @@ body {
   font-weight: 700;
 }
 
+.upload__success {
+  padding: 10px 14px;
+  border: var(--stroke);
+  background: var(--sky);
+  font-size: 17px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+}
+
 .upload__challenge {
   display: flex;
   flex-direction: column;

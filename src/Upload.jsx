@@ -62,6 +62,7 @@ export default function Upload() {
   const [uploading, setUploading] = useState(false);
   const [dragOver, setDragOver] = useState(false);
   const [authError, setAuthError] = useState("");
+  const [successCount, setSuccessCount] = useState(0);
   const fileInputRef = useRef(null);
 
   const mergeFiles = (incoming) => {
@@ -69,6 +70,7 @@ export default function Upload() {
       (f) => f.type.startsWith("image/") || f.type.startsWith("video/")
     );
     if (!arr.length) return;
+    setSuccessCount(0);
     setFiles((prev) => [...prev, ...arr]);
     setStatuses((prev) => [
       ...prev,
@@ -98,6 +100,7 @@ export default function Upload() {
 
     setUploading(true);
     setAuthError("");
+    let doneCount = 0;
 
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
@@ -130,11 +133,13 @@ export default function Upload() {
       try {
         await putFile(file, presign.url, (pct) => patchStatus(i, { progress: pct }));
         patchStatus(i, { state: "done", progress: 100 });
+        doneCount++;
       } catch (err) {
         patchStatus(i, { state: "failed", error: err.message });
       }
     }
 
+    setSuccessCount(doneCount);
     setAnswer("");
     setUploading(false);
     setFiles([]);
@@ -241,6 +246,12 @@ export default function Upload() {
                 );
               })}
             </ul>
+          )}
+
+          {successCount > 0 && (
+            <div className="upload__success">
+              {successCount === 1 ? t.successSingular : t.successPlural.replace("{n}", successCount)}
+            </div>
           )}
 
           <div className="upload__challenge">

@@ -100,6 +100,8 @@ export const uploadTranslations = {
     fileSingular: "file",
     filePlural: "files",
     removePrefix: "Remove",
+    successSingular: "Successfully uploaded 1 file!",
+    successPlural: "Successfully uploaded {n} files!",
   },
   no: {
     panelTitle: "Velg filer",
@@ -118,6 +120,8 @@ export const uploadTranslations = {
     fileSingular: "fil",
     filePlural: "filer",
     removePrefix: "Fjern",
+    successSingular: "1 fil ble lastet opp!",
+    successPlural: "{n} filer ble lastet opp!",
   },
 };
 
