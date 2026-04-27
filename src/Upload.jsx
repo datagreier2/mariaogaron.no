@@ -102,36 +102,41 @@ export default function Upload() {
     setAuthError("");
     let doneCount = 0;
 
-    for (let i = 0; i < files.length; i++) {
-      const file = files[i];
-      patchStatus(i, { state: "uploading", progress: 0, error: "" });
+    // Fetch all pre-signed URLs in one call (token is single-use)
+    const params = new URLSearchParams({
+      token: challenge.token,
+      answer: answer,
+      uploader: name.trim(),
+    });
+    files.forEach((f) => params.append("filename", f.name));
 
-      let presign;
-      try {
-        const resp = await fetch(
-          `${API_BASE}/api/presign?filename=${encodeURIComponent(file.name)}&token=${encodeURIComponent(challenge.token)}&answer=${encodeURIComponent(answer)}&uploader=${encodeURIComponent(name.trim())}`
-        );
-        if (resp.status === 403) {
-          const msg = await resp.text();
-          patchStatus(i, { state: "failed", error: msg });
-          setAuthError(msg);
-          setAnswer("");
-          setUploading(false);
-          reload();
-          return;
-        }
-        if (!resp.ok) {
-          patchStatus(i, { state: "failed", error: `HTTP ${resp.status}` });
-          continue;
-        }
-        presign = await resp.json();
-      } catch (err) {
-        patchStatus(i, { state: "failed", error: err.message });
-        continue;
+    let presigns;
+    try {
+      const resp = await fetch(`${API_BASE}/api/presign?${params}`);
+      if (resp.status === 403) {
+        const body = await resp.json().catch(() => ({ detail: "Feil svar eller utløpt utfordring" }));
+        setAuthError(body.detail ?? "Feil svar eller utløpt utfordring");
+        setAnswer("");
+        setUploading(false);
+        reload();
+        return;
       }
+      if (!resp.ok) {
+        files.forEach((_, i) => patchStatus(i, { state: "failed", error: `HTTP ${resp.status}` }));
+        setUploading(false);
+        return;
+      }
+      presigns = await resp.json();
+    } catch (err) {
+      files.forEach((_, i) => patchStatus(i, { state: "failed", error: err.message }));
+      setUploading(false);
+      return;
+    }
 
+    for (let i = 0; i < files.length; i++) {
+      patchStatus(i, { state: "uploading", progress: 0, error: "" });
       try {
-        await putFile(file, presign.url, (pct) => patchStatus(i, { progress: pct }));
+        await putFile(files[i], presigns[i].url, (pct) => patchStatus(i, { progress: pct }));
         patchStatus(i, { state: "done", progress: 100 });
         doneCount++;
       } catch (err) {
