@@ -10,6 +10,7 @@ export default defineConfig({
         main: resolve(__dirname, "index.html"),
         middag: resolve(__dirname, "middag/index.html"),
         vielse: resolve(__dirname, "vielse/index.html"),
+        gaver: resolve(__dirname, "gaver/index.html"),
       },
     },
   },

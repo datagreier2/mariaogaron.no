@@ -164,6 +164,9 @@ export default function App() {
         </div>
         <h1>{t.heroTitle}</h1>
         <p>{t.heroBody}</p>
+        <div className="vipps-help" style={{ gridColumn: "1 / -1" }}>
+          <a href="/gaver" className="vipps-help__btn">{t.vippsHelpBtn}</a>
+        </div>
       </header>
 
       <main className="grid">
