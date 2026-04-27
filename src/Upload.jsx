@@ -4,7 +4,7 @@ import { useI18n, uploadTranslations } from "./i18n";
 const API_BASE = "https://api.mariaogaron.no";
 const ACCEPT = "image/*,video/*";
 
-function useFreshChallenge() {
+function useFreshChallenge(language) {
   const [challenge, setChallenge] = useState(null);
   const [loading, setLoading] = useState(true);
   const [failed, setFailed] = useState(false);
@@ -12,7 +12,7 @@ function useFreshChallenge() {
   const reload = useCallback(() => {
     setLoading(true);
     setFailed(false);
-    fetch(`${API_BASE}/api/challenge`)
+    fetch(`${API_BASE}/api/challenge?lang=${language}`)
       .then((r) => {
         if (!r.ok) throw new Error();
         return r.json();
@@ -25,7 +25,7 @@ function useFreshChallenge() {
         setLoading(false);
         setFailed(true);
       });
-  }, []);
+  }, [language]);
 
   useEffect(() => {
     reload();
@@ -54,7 +54,7 @@ function putFile(file, url, onProgress) {
 export default function Upload() {
   const { language } = useI18n();
   const t = uploadTranslations[language] ?? uploadTranslations.en;
-  const { challenge, loading: challengeLoading, failed: challengeFailed, reload } = useFreshChallenge();
+  const { challenge, loading: challengeLoading, failed: challengeFailed, reload } = useFreshChallenge(language);
   const [name, setName] = useState("");
   const [files, setFiles] = useState([]);
   const [answer, setAnswer] = useState("");

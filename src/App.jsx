@@ -172,7 +172,7 @@ export default function App() {
           title={t.uploadPanelTitle}
           body={t.uploadPanelBody}
           noteChildren={<a href="#upload-section">{t.uploadPanelLink}</a>}
-          className="panel--gifts"
+          className="panel--info"
         />
         <Upload />
         <Section
