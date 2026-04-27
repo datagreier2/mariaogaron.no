@@ -102,6 +102,7 @@ export const uploadTranslations = {
     removePrefix: "Remove",
     successSingular: "Successfully uploaded 1 file!",
     successPlural: "Successfully uploaded {n} files!",
+    retryLabel: "retry {n}/{max}",
   },
   no: {
     panelTitle: "Velg filer",
@@ -122,6 +123,7 @@ export const uploadTranslations = {
     removePrefix: "Fjern",
     successSingular: "1 fil ble lastet opp!",
     successPlural: "{n} filer ble lastet opp!",
+    retryLabel: "forsøk {n}/{max}",
   },
 };
 
@@ -174,6 +176,7 @@ const translations = {
     uploadPanelLink: "Upload your photos below!",
     lostTitle: "Forgot something?",
     lostBody: "Contact Maria 🙂",
+    vippsHelpBtn: "Payment issues?",
     footerBody: "..."
   },
   no: {
@@ -225,8 +228,36 @@ const translations = {
     uploadPanelLink: "Last opp bildene dine under!",
     lostTitle: "Gjenglemt?",
     lostBody: "Si i fra til Maria 🙂",
+    vippsHelpBtn: "Vipps-trøbbel?",
     footerBody: "..."
   }
+};
+
+export const gaverTranslations = {
+  en: {
+    heroTitle: "Gift payment",
+    vippsIssueTitle: "Vipps issues",
+    vippsIssueBody: "The Vipps link we used earlier apparently got \"full\" for an unknown reason. You can use Aron's Vipps number 46693130 instead.",
+    internationalTitle: "International payments",
+    internationalBody: "You can send a bank transfer directly to our account:",
+    ibanLabel: "IBAN",
+    bicLabel: "BIC/SWIFT",
+    copyLabel: "[copy]",
+    copiedLabel: "✓",
+    backLink: "← Back",
+  },
+  no: {
+    heroTitle: "Gavebetaling",
+    vippsIssueTitle: "Vipps-trøbbel",
+    vippsIssueBody: "Vipps-lenken vi brukte tidligere ble visst «full» av ukjent grunn. Man kan bruke Arons Vipps på 46693130 i stedet.",
+    internationalTitle: "Fra utlandet",
+    internationalBody: "Du kan sende bankoverføring direkte til kontoen vår:",
+    ibanLabel: "IBAN",
+    bicLabel: "BIC/SWIFT",
+    copyLabel: "[kopier]",
+    copiedLabel: "✓",
+    backLink: "← Tilbake",
+  },
 };
 
 const STORAGE_KEY = "maria-aron-language";

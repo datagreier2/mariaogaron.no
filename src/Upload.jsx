@@ -3,6 +3,8 @@ import { useI18n, uploadTranslations } from "./i18n";
 
 const API_BASE = "https://api.mariaogaron.no";
 const ACCEPT = "image/*,video/*";
+const MAX_RETRIES = 3;
+const RETRY_DELAY_MS = 2000;
 
 function useFreshChallenge(language) {
   const [challenge, setChallenge] = useState(null);
@@ -64,6 +66,30 @@ export default function Upload() {
   const [authError, setAuthError] = useState("");
   const [successCount, setSuccessCount] = useState(0);
   const fileInputRef = useRef(null);
+  const wakeLockRef = useRef(null);
+  const isUploadingRef = useRef(false);
+
+  const acquireWakeLock = useCallback(async () => {
+    if (!("wakeLock" in navigator)) return;
+    try { wakeLockRef.current = await navigator.wakeLock.request("screen"); } catch {}
+  }, []);
+
+  const releaseWakeLock = useCallback(async () => {
+    if (wakeLockRef.current) {
+      try { await wakeLockRef.current.release(); } catch {}
+      wakeLockRef.current = null;
+    }
+  }, []);
+
+  useEffect(() => {
+    const handleVisibilityChange = async () => {
+      if (document.visibilityState === "visible" && isUploadingRef.current) {
+        await acquireWakeLock();
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => document.removeEventListener("visibilitychange", handleVisibilityChange);
+  }, [acquireWakeLock]);
 
   const mergeFiles = (incoming) => {
     const arr = Array.from(incoming).filter(
@@ -99,8 +125,11 @@ export default function Upload() {
     if (!challenge || !files.length || answer === "" || name.trim() === "") return;
 
     setUploading(true);
+    isUploadingRef.current = true;
     setAuthError("");
     let doneCount = 0;
+
+    await acquireWakeLock();
 
     // Fetch all pre-signed URLs in one call (token is single-use)
     const params = new URLSearchParams({
@@ -117,33 +146,50 @@ export default function Upload() {
         const body = await resp.json().catch(() => ({ detail: "Feil svar eller utløpt utfordring" }));
         setAuthError(body.detail ?? "Feil svar eller utløpt utfordring");
         setAnswer("");
+        await releaseWakeLock();
+        isUploadingRef.current = false;
         setUploading(false);
         reload();
         return;
       }
       if (!resp.ok) {
         files.forEach((_, i) => patchStatus(i, { state: "failed", error: `HTTP ${resp.status}` }));
+        await releaseWakeLock();
+        isUploadingRef.current = false;
         setUploading(false);
         return;
       }
       presigns = await resp.json();
     } catch (err) {
       files.forEach((_, i) => patchStatus(i, { state: "failed", error: err.message }));
+      await releaseWakeLock();
+      isUploadingRef.current = false;
       setUploading(false);
       return;
     }
 
     for (let i = 0; i < files.length; i++) {
-      patchStatus(i, { state: "uploading", progress: 0, error: "" });
-      try {
-        await putFile(files[i], presigns[i].url, (pct) => patchStatus(i, { progress: pct }));
-        patchStatus(i, { state: "done", progress: 100 });
-        doneCount++;
-      } catch (err) {
-        patchStatus(i, { state: "failed", error: err.message });
+      patchStatus(i, { state: "uploading", progress: 0, error: "", retry: 0 });
+      for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
+        if (attempt > 0) {
+          await new Promise((r) => setTimeout(r, RETRY_DELAY_MS));
+          patchStatus(i, { state: "uploading", progress: 0, retry: attempt });
+        }
+        try {
+          await putFile(files[i], presigns[i].url, (pct) => patchStatus(i, { progress: pct }));
+          patchStatus(i, { state: "done", progress: 100, retry: 0 });
+          doneCount++;
+          break;
+        } catch (err) {
+          if (attempt === MAX_RETRIES) {
+            patchStatus(i, { state: "failed", error: err.message, retry: 0 });
+          }
+        }
       }
     }
 
+    await releaseWakeLock();
+    isUploadingRef.current = false;
     setSuccessCount(doneCount);
     setAnswer("");
     setUploading(false);
@@ -213,7 +259,12 @@ export default function Upload() {
                 const s = statuses[i] ?? { state: "pending", progress: 0, error: "" };
                 return (
                   <li key={`${file.name}-${i}`} className={`upload__file upload__file--${s.state}`}>
-                    <span className="upload__file-name">{file.name}</span>
+                    <span className="upload__file-name">
+                      {file.name}
+                      {s.state === "uploading" && s.retry > 0
+                        ? ` … (${t.retryLabel.replace("{n}", s.retry).replace("{max}", MAX_RETRIES)})`
+                        : ""}
+                    </span>
                     <span className="upload__file-right">
                       {s.state === "pending" && !uploading && (
                         <button
