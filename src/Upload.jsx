@@ -71,6 +71,7 @@ export default function Upload({ language: languageProp }) {
   const [dragOver, setDragOver] = useState(false);
   const [authError, setAuthError] = useState("");
   const [successCount, setSuccessCount] = useState(0);
+  const [failedFiles, setFailedFiles] = useState([]);
   const fileInputRef = useRef(null);
   const wakeLockRef = useRef(null);
   const isUploadingRef = useRef(false);
@@ -103,6 +104,7 @@ export default function Upload({ language: languageProp }) {
     );
     if (!arr.length) return;
     setSuccessCount(0);
+    setFailedFiles([]);
     setFiles((prev) => [...prev, ...arr]);
     setStatuses((prev) => [
       ...prev,
@@ -134,6 +136,7 @@ export default function Upload({ language: languageProp }) {
     isUploadingRef.current = true;
     setAuthError("");
     let doneCount = 0;
+    const failedNames = [];
 
     await acquireWakeLock();
 
@@ -175,6 +178,7 @@ export default function Upload({ language: languageProp }) {
     }
 
     for (let i = 0; i < files.length; i++) {
+      let succeeded = false;
       patchStatus(i, { state: "uploading", progress: 0, error: "", retry: 0 });
       for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
         if (attempt > 0) {
@@ -185,6 +189,7 @@ export default function Upload({ language: languageProp }) {
           await putFile(files[i], presigns[i].url, (pct) => patchStatus(i, { progress: pct }));
           patchStatus(i, { state: "done", progress: 100, retry: 0 });
           doneCount++;
+          succeeded = true;
           break;
         } catch (err) {
           if (attempt === MAX_RETRIES) {
@@ -192,11 +197,13 @@ export default function Upload({ language: languageProp }) {
           }
         }
       }
+      if (!succeeded) failedNames.push(files[i].name);
     }
 
     await releaseWakeLock();
     isUploadingRef.current = false;
     setSuccessCount(doneCount);
+    setFailedFiles(failedNames);
     setAnswer("");
     setUploading(false);
     setFiles([]);
@@ -262,60 +269,84 @@ export default function Upload({ language: languageProp }) {
           <p className="upload__storage-note">{boldText(t.storageNote)}</p>
 
           {files.length > 0 && (
-            <ul className="upload__file-list">
-              {files.map((file, i) => {
-                const s = statuses[i] ?? { state: "pending", progress: 0, error: "" };
-                return (
-                  <li key={`${file.name}-${i}`} className={`upload__file upload__file--${s.state}`}>
-                    <span className="upload__file-name">
-                      {file.name}
-                      {s.state === "uploading" && s.retry > 0
-                        ? ` … (${t.retryLabel.replace("{n}", s.retry).replace("{max}", MAX_RETRIES)})`
-                        : ""}
-                    </span>
-                    <span className="upload__file-right">
-                      {s.state === "pending" && !uploading && (
-                        <button
-                          type="button"
-                          className="upload__file-remove"
-                          onClick={() => removeFile(i)}
-                          aria-label={`${t.removePrefix} ${file.name}`}
-                        >
-                          ×
-                        </button>
-                      )}
-                      {s.state === "uploading" && (
-                        <span className="upload__progress-wrap">
-                          <span
-                            className="upload__progress-bar"
-                            style={{ width: `${s.progress}%` }}
-                            role="progressbar"
-                            aria-valuenow={s.progress}
-                            aria-valuemin={0}
-                            aria-valuemax={100}
-                          />
-                          <span className="upload__progress-pct">{s.progress}%</span>
-                        </span>
-                      )}
-                      {s.state === "done" && (
-                        <span className="upload__status upload__status--ok">✓</span>
-                      )}
-                      {s.state === "failed" && (
-                        <span className="upload__status upload__status--fail" title={s.error}>
-                          ✗
-                        </span>
-                      )}
-                    </span>
-                  </li>
-                );
-              })}
-            </ul>
+            files.length > 7 ? (
+              <p className="upload__file-count">
+                {files.length} {t.filePlural}
+              </p>
+            ) : (
+              <ul className="upload__file-list">
+                {files.map((file, i) => {
+                  const s = statuses[i] ?? { state: "pending", progress: 0, error: "" };
+                  return (
+                    <li key={`${file.name}-${i}`} className={`upload__file upload__file--${s.state}`}>
+                      <span className="upload__file-name">
+                        {file.name}
+                        {s.state === "uploading" && s.retry > 0
+                          ? ` … (${t.retryLabel.replace("{n}", s.retry).replace("{max}", MAX_RETRIES)})`
+                          : ""}
+                      </span>
+                      <span className="upload__file-right">
+                        {s.state === "pending" && !uploading && (
+                          <button
+                            type="button"
+                            className="upload__file-remove"
+                            onClick={() => removeFile(i)}
+                            aria-label={`${t.removePrefix} ${file.name}`}
+                          >
+                            ×
+                          </button>
+                        )}
+                        {s.state === "uploading" && (
+                          <span className="upload__progress-wrap">
+                            <span
+                              className="upload__progress-bar"
+                              style={{ width: `${s.progress}%` }}
+                              role="progressbar"
+                              aria-valuenow={s.progress}
+                              aria-valuemin={0}
+                              aria-valuemax={100}
+                            />
+                            <span className="upload__progress-pct">{s.progress}%</span>
+                          </span>
+                        )}
+                        {s.state === "done" && (
+                          <span className="upload__status upload__status--ok">✓</span>
+                        )}
+                        {s.state === "failed" && (
+                          <span className="upload__status upload__status--fail" title={s.error}>
+                            ✗
+                          </span>
+                        )}
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
+            )
           )}
 
-          {successCount > 0 && (
-            <div className="upload__success">
-              {successCount === 1 ? t.successSingular : t.successPlural.replace("{n}", successCount)}
-            </div>
+          {(successCount > 0 || failedFiles.length > 0) && (
+            failedFiles.length === 0 ? (
+              <div className="upload__success">{t.allSuccessful}</div>
+            ) : (
+              <>
+                {successCount > 0 && (
+                  <div className="upload__success">
+                    {successCount === 1 ? t.successSingular : t.successPlural.replace("{n}", successCount)}
+                  </div>
+                )}
+                <div className="upload__failed">
+                  <p className="upload__failed-heading">
+                    {failedFiles.length === 1 ? t.failedSingular : t.failedPlural.replace("{n}", failedFiles.length)}
+                  </p>
+                  {failedFiles.length <= 7 && (
+                    <ul className="upload__failed-list">
+                      {failedFiles.map((name, i) => <li key={i}>{name}</li>)}
+                    </ul>
+                  )}
+                </div>
+              </>
+            )
           )}
 
           <div className="upload__challenge">

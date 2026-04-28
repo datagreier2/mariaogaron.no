@@ -891,6 +891,32 @@ body {
   line-height: 1.4;
 }
 
+.upload__file-count {
+  margin: 0;
+  font-size: 15px;
+  opacity: 0.7;
+}
+
+.upload__failed {
+  padding: 10px 14px;
+  border: var(--stroke);
+  background: #fff0f0;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.upload__failed-heading {
+  margin: 0 0 6px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.upload__failed-list {
+  margin: 0;
+  padding-left: 18px;
+}
+
 .upload__challenge {
   display: flex;
   flex-direction: column;
