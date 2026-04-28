@@ -177,7 +177,7 @@ export default function App() {
           noteChildren={<a href="#upload-section">{t.uploadPanelLink}</a>}
           className="panel--info"
         />
-        <Upload />
+        <Upload language={language} />
         <Section
           id="lost"
           title={t.lostTitle}

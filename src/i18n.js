@@ -103,6 +103,7 @@ export const uploadTranslations = {
     successSingular: "Successfully uploaded 1 file!",
     successPlural: "Successfully uploaded {n} files!",
     retryLabel: "retry {n}/{max}",
+    storageNote: "We have **unlimited** storage space, and there's **no file size limit** either — at least in theory. So go ahead and upload everything you've got!",
   },
   no: {
     panelTitle: "Velg filer",
@@ -124,6 +125,7 @@ export const uploadTranslations = {
     successSingular: "1 fil ble lastet opp!",
     successPlural: "{n} filer ble lastet opp!",
     retryLabel: "forsøk {n}/{max}",
+    storageNote: "Vi har **uendelig** lagringsplass, og filstørrelse er også **ubegrenset**, i hvert fall teoretisk. Så bare last opp alt du vil!",
   },
 };
 

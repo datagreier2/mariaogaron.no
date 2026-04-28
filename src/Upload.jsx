@@ -2,6 +2,11 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { useI18n, uploadTranslations } from "./i18n";
 
 const API_BASE = "https://api.mariaogaron.no";
+
+const boldText = (text) =>
+  text.split(/\*\*(.+?)\*\*/).map((part, i) =>
+    i % 2 === 1 ? <strong key={i}>{part}</strong> : part
+  );
 const ACCEPT = "image/*,video/*";
 const MAX_RETRIES = 3;
 const RETRY_DELAY_MS = 2000;
@@ -53,8 +58,9 @@ function putFile(file, url, onProgress) {
   });
 }
 
-export default function Upload() {
-  const { language } = useI18n();
+export default function Upload({ language: languageProp }) {
+  const { language: languageCtx } = useI18n();
+  const language = languageProp ?? languageCtx;
   const t = uploadTranslations[language] ?? uploadTranslations.en;
   const { challenge, loading: challengeLoading, failed: challengeFailed, reload } = useFreshChallenge(language);
   const [name, setName] = useState("");
@@ -252,6 +258,8 @@ export default function Upload() {
               <span className="upload__dropzone-add">{t.dropzoneAdd}</span>
             )}
           </div>
+
+          <p className="upload__storage-note">{boldText(t.storageNote)}</p>
 
           {files.length > 0 && (
             <ul className="upload__file-list">
