@@ -893,8 +893,11 @@ body {
 
 .upload__file-count {
   margin: 0;
-  font-size: 15px;
-  opacity: 0.7;
+  padding: 10px 14px;
+  border: var(--stroke);
+  background: #fff;
+  font-family: "Space Mono", "Courier New", monospace;
+  font-size: 14px;
 }
 
 .upload__failed {
